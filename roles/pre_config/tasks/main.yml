@@ -5,12 +5,8 @@
 #  - name: create rc.local from template
 #    template: src=config.j2 dest=/home/{{ username }}/.ssh/config owner={{ username}} group={{ group }} mode=0600
 
-  - name: install epel-release
-    yum: name=epel-release state=present
-    when: ansible_distribution in ['RedHat', 'CentOS']
-
   - name: installing dependencies
-    yum: name={{ item }} state=present
+    apt: name={{ item }} state=present update_cache=yes
     with_items:
       - curl
       - gcc
@@ -20,18 +16,20 @@
       - xfsprogs
       - git
       - git-core
-      - libffi-devel
+      - libffi-dev
+      - liberasurecode-dev
       - xinetd
       - python-setuptools
-      - python-devel
+      - python-dev
       - python-simplejson 
-      - pyxattr
+      - python-xattr
       - python-eventlet
       - python-greenlet
       - python-netifaces
       - python-pip
-      - python-dns
+      - python-dnspython
       - python-mock
+      - python-selinux
       - tree
       - vim
       - make
@@ -50,3 +48,6 @@
       - Paste
       - pyudev
       - pip
+      - setuptools
+      - pyeclib
+
