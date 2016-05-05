@@ -9,6 +9,8 @@ parts from [here](https://github.com/redbo/swift/blob/haio/go/README.rst), [here
 
 
 Steps
+
+
 1) vagrant up
 
 2) vagrant ssh
