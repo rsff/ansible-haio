@@ -1,0 +1,27 @@
+---
+- name: Create symlink to swift
+  file: src=/vagrant/source/swift/  dest=/home/vagrant/go/src/github.com/openstack/swift owner=vagrant group=vagrant state=link
+
+- name: run hummingbird script
+  sudo: no
+  script: hummingbird.sh
+
+ #- name: Build hummingbird
+ #  command: chdir=/home/vagrant/go/src/github.com/openstack/swift/go make get test bin/hummingbird
+ # environment:
+ #   PATH: /sbin:/usr/sbin:/bin:/usr/bin:/usr/local/bin:/usr/local/go/bin
+
+ 
+#- name: symbolic link
+#    file: src=/vagrant/source/swift/  dest=/home/vagrant/go/src/github.com/openstack/swift owner=vagrant group=vagrant state=link
+
+
+#  - name: testy 
+#    shell: make bin bin/hummingbird chdir=/home/vagrant/go/src/github.com/openstack/swift/go/
+#    environment:
+#      GOPATH: "/home/vagrant/go"
+#      GOBIN: "/home/vagrant/go/bin"
+#      PATH: "/home/vagrant/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/local/go/bin"
+
+
+
