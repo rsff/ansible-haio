@@ -5,7 +5,6 @@
   environment:
     LD_LIBRARY_PATH: /usr/local/lib
   roles:
-#- {role: pre_config, when: "{{ configure_gerrit }}" }
     - pre_config
     - go
     - swift

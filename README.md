@@ -1,45 +1,12 @@
-SAIO Ansible playbook
+HAIO hummingbird Ansible playbook
 =========
 
-An Ansible playbook for provisioning a [Swift](http://docs.openstack.org/developer/swift/development_saio.html) and [Swift-on-File](https://github.com/openstack/swiftonfile/blob/master/doc/markdown/quick_start_guide.md) all-in-one
-development environment on Fedora or CentOS(default).
+An Ansible playbook for provisioning a [HAIO](https://github.com/redbo/swift/blob/haio/go/README.rst)
 
-## To run:
-To provision the VM, run:
- 1. `vagrant up --provider=virtualbox`
 
-To run automated tests:
- 1. `vagrant ssh`
- 1. `cd /vagrant/source/swift`
- 1. `./.unittests`
- 1. `./.functests`
 
-To quickly test installation:
- 1. `swift stat`
- 1. `echo 'hello world' > hw`
- 1. `swift upload c1 hw`
- 1. `swift list`
+Steps
+1) vagrant up
+2) vagrant ssh
 
-To test installation with Swift-on-File (Note: make sure to have Swift-on-File provisioned):
- 1. `swift post c2 -H 'X-Storage-Policy: swiftonfile'`
- 1. `echo 'hello swiftonfile' > hs`
- 1. `swift upload c2 hs`
- 1. `swift list`
- 1. `ls /mnt/swiftonfile`
 
-### Configuration Options:
-You can set a few options to change how the VM is provisioned. In `global_vars.yml`, you can set if you want Swift-on-File configured or not and what storage policy should be set as the default. In the `Vagrantfile`, you can choose to provision either a Fedora VM or a CentOS-7 VM.
-
-#### Gerrit repo setup
-In case you would like to use the provisioned VM as your development environment, Ansible can add gerrit as a remote repo to both Swift and Swift-on-File. Checkout the options in `global_vars.yml`
-
-### Running Ansible only:
-In case you already have a VM created and just wants to execute the Ansible playbook, run the following command:
- 1. `ansible-playbook site.yml -i "192.168.56.103," --ask-sudo-pass`
-
-####Notes:
- * Make sure to update to the correct IP address on the command above (it's important to keep the comma ',' at the end) and the `username` and `group` variables in `global_vars.yml`
- * If testing on RHEL/CentOS, enable EPEL repository first.
-
-## Todo:
-* Add gluster volume
