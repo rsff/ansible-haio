@@ -1,3 +1,4 @@
+#this ansible can never fail!
 - hosts: all
   sudo: True
   vars_files:
